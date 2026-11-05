@@ -6,7 +6,7 @@
 /*   By: sech-cha <sech-cha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 16:42:27 by sech-cha          #+#    #+#             */
-/*   Updated: 2026/11/04 21:29:33 by sech-cha         ###   ########.fr       */
+/*   Updated: 2026/11/05 13:21:56 by sech-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,31 +28,49 @@ int	ft_get_conversion(char c, va_list *args)
 		return (ft_puthex(va_arg(*args, unsigned int), c));
 	else if (c == '%')
 		return (ft_putchar('%'));
-	return (0);
+	return (write(1, "%", 1) + write(1, &c, 1));
+}
+
+int	ft_handele_format(const char *format, va_list *args)
+{
+	int	count;
+	int	written;
+	int	i;
+
+	i = 0;
+	count = 0;
+    written = 0;
+	while (format[i])
+	{
+		if (format[i] == '%' && !format[i + 1])
+		{
+			return (-1);
+		}
+		else if (format[i] == '%' && format[i + 1])
+		{
+			i++;
+			written = ft_get_conversion(format[i], args);
+		}
+		else
+			written = write(1, &format[i], 1);
+        if (written < 0)
+            return (-1);
+        count += written;
+		i++;
+	}
+	return (count);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		count;
-	int		i;
 
 	if (!format)
 		return (-1);
 	count = 0;
-	i = 0;
 	va_start(args, format);
-	while (format[i])
-	{
-		if (format[i] == '%' && format[i + 1])
-		{
-			i++;
-			count += ft_get_conversion(format[i], &args);
-		}
-		else
-			count += write(1, &format[i], 1);
-		i++;
-	}
+	count += ft_handele_format(format, &args);
 	va_end(args);
 	return (count);
 }
