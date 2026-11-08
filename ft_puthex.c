@@ -24,7 +24,7 @@ int	ft_puthex(unsigned int nb, char c)
 	count = 0;
 	if (nb >= 16)
 	{
-        count += ft_puthex(nb / 16, c);
+		count += ft_puthex(nb / 16, c);
 	}
 	count += write(1, &s[nb % 16], 1);
 	return (count);

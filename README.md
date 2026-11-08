@@ -63,7 +63,7 @@ Include the header file in your C source file:
 Compile your program with the library:
 
 ```bash
-cc main.c -L. -lftprintf -o program
+cc main.c libftprintf.a -o program
 ```
 
 Run the executable:

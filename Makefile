@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: sech-cha <sech-cha@student.1337.ma>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/11/04 14:16:31 by sech-cha          #+#    #+#              #
-#    Updated: 2026/11/04 21:31:40 by sech-cha         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
@@ -37,4 +25,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY: all clean fclean re
+.PHONY: clean

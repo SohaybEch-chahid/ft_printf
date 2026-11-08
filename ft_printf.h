@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int ft_printf(const char *format, ...);
+int	ft_printf(const char *format, ...);
 int	ft_putchar(char c);
 int	ft_putstr(char *s);
 int	ft_puthex(unsigned int nb, char c);

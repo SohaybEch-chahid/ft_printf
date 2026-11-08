@@ -6,7 +6,7 @@
 /*   By: sech-cha <sech-cha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 16:42:27 by sech-cha          #+#    #+#             */
-/*   Updated: 2026/11/05 13:21:56 by sech-cha         ###   ########.fr       */
+/*   Updated: 2026/11/08 18:40:39 by sech-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,11 @@ int	ft_handele_format(const char *format, va_list *args)
 
 	i = 0;
 	count = 0;
-    written = 0;
+	written = 0;
 	while (format[i])
 	{
 		if (format[i] == '%' && !format[i + 1])
-		{
 			return (-1);
-		}
 		else if (format[i] == '%' && format[i + 1])
 		{
 			i++;
@@ -53,9 +51,9 @@ int	ft_handele_format(const char *format, va_list *args)
 		}
 		else
 			written = write(1, &format[i], 1);
-        if (written < 0)
-            return (-1);
-        count += written;
+		if (written < 0)
+			return (-1);
+		count += written;
 		i++;
 	}
 	return (count);
