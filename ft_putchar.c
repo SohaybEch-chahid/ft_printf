@@ -6,17 +6,16 @@
 /*   By: sech-cha <sech-cha@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:50:06 by sech-cha          #+#    #+#             */
-/*   Updated: 2026/11/04 15:52:28 by sech-cha         ###   ########.fr       */
+/*   Updated: 2026/11/09 16:29:49 by sech-cha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char c)
+int	ft_putchar(int c)
 {
-	int	count;
+	unsigned char	ch;
 
-	count = 0;
-	count += write(1, &c, 1);
-	return (count);
+	ch = (unsigned char)c;
+	return (write(1, &ch, 1));
 }
